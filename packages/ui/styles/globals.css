@@ -1,0 +1,69 @@
+@font-face {
+  font-family: "archia";
+  src: url("/fonts/archia-regular-webfont.woff") format("woff");
+  src: url("/fonts/archia-regular-webfont.woff2") format("woff2");
+  /* src: url("/fonts/Archia-Regular.otf") format("otf"); */
+  font-display: auto;
+  font-style: normal;
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "archia";
+  src: url("/fonts/archia-medium-webfont.woff") format("woff");
+  src: url("/fonts/archia-medium-webfont.woff2") format("woff2");
+  /* src: url("/fonts/Archia-Medium.otf") format("otf"); */
+  font-display: auto;
+  font-style: medium;
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: "archia";
+  src: url("/fonts/archia-semibold-webfont.woff") format("woff");
+  src: url("/fonts/archia-semibold-webfont.woff2") format("woff2");
+  /* src: url("/fonts/Archia-Semibold.otf") format("otf"); */
+  font-display: auto;
+  font-style: semibold;
+  font-weight: 600;
+}
+@font-face {
+  font-family: "archia";
+  src: url("/fonts/archia-bold-webfont.woff") format("woff");
+  src: url("/fonts/archia-bold-webfont.woff2") format("woff2");
+  /* src: url("/fonts/Archia-Bold.otf") format("otf"); */
+  font-display: auto;
+  font-style: bold;
+  font-weight: 700;
+}
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+  font-family: "archia, arial, sans-serif";
+}
+
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: "archia, arial, sans-serif";
+}

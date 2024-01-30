@@ -1,0 +1,1 @@
+module.exports = require("../../packages/ui/prettier.config");

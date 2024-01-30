@@ -1,0 +1,75 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  h1 {
+    @apply text-2xl;
+    @apply md:text-3xl;
+    @apply font-medium;
+  }
+  h2 {
+    @apply text-2xl;
+    @apply md:font-semibold;
+    @apply font-medium;
+  }
+  h3 {
+    @apply text-2xl;
+    @apply md:font-semibold;
+    @apply font-medium;
+  }
+  h4 {
+    @apply text-xl;
+    @apply font-medium;
+  }
+
+  h5 {
+    @apply text-sm;
+    @apply md:font-semibold;
+    @apply font-medium;
+  }
+
+  h6 {
+    @apply text-sm;
+    @apply md:text-lg;
+    @apply font-medium;
+  }
+
+  button {
+    @apply text-xs;
+    @apply md:font-medium;
+    @apply font-normal;
+  }
+  a {
+    @apply text-xs;
+    @apply md:font-medium;
+    @apply font-normal;
+  }
+
+  p {
+    @apply font-normal;
+    @apply md:text-md;
+    @apply text-xs;
+  }
+
+  * {
+    @apply font-sans;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .hide-scrollbar {
+    -ms-overflow-style: none; /* Internet Explorer 10+ */
+    scrollbar-width: none; /* Firefox */
+  }
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none; /* Safari and Chrome */
+  }
+}
+
+@layer components {
+}
