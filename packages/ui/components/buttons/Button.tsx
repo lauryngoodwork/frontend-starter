@@ -24,6 +24,17 @@ type LinkButtonType = DefaultCustomButtonProps & LinkProps;
 
 type CustomButton = (ButtonType & IsButton) | (LinkButtonType & IsLink);
 
+/**
+ * Button with additional props. Add href prop to turn it into a link button
+ * @param theme -- Color theme of the button (Optional)
+ * @param variant -- Style of the button (Optional)
+ * @param fullWidth -- Width is 100% if true (Optional)
+ * @param href -- If populated, button will become a Next Link (Optional)
+ * @example ```
+ * <Button theme="light" variant="primary">This is a button</Button>
+ * <Button href={"#"}>This is a link</Button>
+ * ```
+ */
 export function Button({
   children,
   theme = "light",

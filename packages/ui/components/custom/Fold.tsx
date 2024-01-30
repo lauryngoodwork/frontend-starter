@@ -5,28 +5,54 @@ import { useMediaQuery } from "../../hooks";
 import { ReactNode } from "react";
 import { theme } from "../../utils/tailwind/theme";
 
+/**
+ * Fold with width and height of screen
+ * @param bg -- Background image source path, or a record with Tailwind screen keys and image source path (Optional)
+ * @example ```
+ * <Fold bg={{ md: "/images/foo.png", base: "/images/bar.png" }}>...</Fold>
+ * ```
+ */
 export function Fold({
   children,
   bg,
 }: {
   children: ReactNode;
-  bg?: string | [string, string?];
+  bg?: string | Record<string, string>;
 }) {
-  const tabletViewport = (theme?.screens as Record<string, string>)?.md;
+  const bgIsSingle = typeof bg === "string";
+  const bgSingle = bgIsSingle ? bg : undefined;
 
-  const isMobile = useMediaQuery(`(max-width: ${tabletViewport})`);
-  const backgroundIsArray = Array.isArray(bg);
-  const backgrounds = {
-    desktop: backgroundIsArray ? bg[0] : bg,
-    mobile: backgroundIsArray ? (bg[1] ? bg[1] : bg[0]) : bg,
-  };
+  const themeScreens = theme?.screens as Record<string, string>;
+
+  const bgKeys = bgIsSingle || bg === undefined ? undefined : Object.keys(bg);
+  const themesInArray = Object.keys(themeScreens);
+  const bgInArray =
+    !bgIsSingle && bg !== undefined
+      ? bgKeys
+          ?.map((k) => ({
+            screen: k,
+            value: bg[k],
+          }))
+          .sort(
+            (a, b) =>
+              themesInArray.indexOf(b.screen) - themesInArray.indexOf(a.screen),
+          )
+      : undefined;
+
+  const bgImage = bgInArray
+    ? bgInArray
+        ?.map((p) =>
+          useMediaQuery(`(min-width: ${themeScreens[p.screen]})`)
+            ? p.value
+            : false,
+        )
+        .filter((p) => p !== false)[0]
+    : bgSingle;
 
   return (
     <div
       style={{
-        backgroundImage: isMobile
-          ? `url('${backgrounds.mobile}')`
-          : `url('${backgrounds.desktop}')`,
+        backgroundImage: `url('${bgImage}')`,
       }}
       className={classNames(
         "relative flex h-screen w-full bg-cover bg-center bg-no-repeat object-cover",

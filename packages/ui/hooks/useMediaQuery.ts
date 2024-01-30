@@ -1,9 +1,12 @@
 import { useEffect, useState } from "react";
 
 /**
- *
+ * A hook that
  * @param query media query string
  * @returns boolean
+ * @example ```
+ * const isDesktop = useMediaQuery("(min-width: 1280px)");
+ * ```
  */
 export function useMediaQuery(query: string) {
   const [matches, setMatches] = useState<boolean>(false);

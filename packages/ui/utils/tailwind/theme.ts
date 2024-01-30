@@ -2,6 +2,7 @@ import type { Config } from "tailwindcss";
 const configTheme: Pick<Config, "theme"> = {
   theme: {
     screens: {
+      base: "0",
       sm: "480px",
       md: "768px",
       lg: "976px",
